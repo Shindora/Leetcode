@@ -1,0 +1,23 @@
+//https://leetcode.com/problems/longest-common-prefix/
+public class LongestCommonPrefix {
+    public static String longestCommonPrefix(String[] strs){
+        if (strs.length == 0) return "";
+        int min_length = strs[0].length();
+        for (int i=1; i<strs.length; i++){
+            min_length = Math.min(min_length, strs[i].length());
+            for (int j=0; j<min_length;j++) {
+                char c = strs[0].charAt(j);
+                char d = strs[i].charAt(j);
+                if (c != d) {
+                    min_length = j;
+                    break;
+                }
+            }
+        }
+        return strs[0].substring(0, min_length);
+    }
+    public static void main(String[] args){
+        String[] inputArray = {"abc", "ab", "aba"};
+        System.out.println(longestCommonPrefix(inputArray));
+    }
+}
